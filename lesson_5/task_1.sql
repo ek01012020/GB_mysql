@@ -1,4 +1,4 @@
--- Пусть в таблице users поля created_at и updated_at оказались незаполненными. Заполните их текущими датой и временем. --
+-- РџСѓСЃС‚СЊ РІ С‚Р°Р±Р»РёС†Рµ users РїРѕР»СЏ created_at Рё updated_at РѕРєР°Р·Р°Р»РёСЃСЊ РЅРµР·Р°РїРѕР»РЅРµРЅРЅС‹РјРё. Р—Р°РїРѕР»РЅРёС‚Рµ РёС… С‚РµРєСѓС‰РёРјРё РґР°С‚РѕР№ Рё РІСЂРµРјРµРЅРµРј. --
 
 DROP DATABASE IF EXISTS shop;
 CREATE DATABASE IF NOT EXISTS shop;
@@ -9,10 +9,10 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
-	birthday_at DATE COMMENT "Дата рождения",
+	birthday_at DATE COMMENT "Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ",
 	created_at DATETIME,
 	updated_at DATETIME 
-) COMMENT "Покупатели";
+) COMMENT "РџРѕРєСѓРїР°С‚РµР»Рё";
 
 INSERT INTO users (name, birthday_at) VALUES 
 	('Kate', '1990-01-01'), ('April', '1985-05-23'), ('Mikle', '2000-09-13');
