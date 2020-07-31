@@ -1,5 +1,5 @@
--- Таблица users была неудачно спроектирована. Записи created_at и updated_at были заданы типом VARCHAR и в них долгое время 
--- помещались значения в формате 20.10.2017 8:10. Необходимо преобразовать поля к типу DATETIME, сохранив введённые ранее значения.
+-- РўР°Р±Р»РёС†Р° users Р±С‹Р»Р° РЅРµСѓРґР°С‡РЅРѕ СЃРїСЂРѕРµРєС‚РёСЂРѕРІР°РЅР°. Р—Р°РїРёСЃРё created_at Рё updated_at Р±С‹Р»Рё Р·Р°РґР°РЅС‹ С‚РёРїРѕРј VARCHAR Рё РІ РЅРёС… РґРѕР»РіРѕРµ РІСЂРµРјСЏ 
+-- РїРѕРјРµС‰Р°Р»РёСЃСЊ Р·РЅР°С‡РµРЅРёСЏ РІ С„РѕСЂРјР°С‚Рµ 20.10.2017 8:10. РќРµРѕР±С…РѕРґРёРјРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ РїРѕР»СЏ Рє С‚РёРїСѓ DATETIME, СЃРѕС…СЂР°РЅРёРІ РІРІРµРґС‘РЅРЅС‹Рµ СЂР°РЅРµРµ Р·РЅР°С‡РµРЅРёСЏ.
 DROP DATABASE IF EXISTS shop;
 CREATE DATABASE IF NOT EXISTS shop;
 
@@ -9,10 +9,10 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255),
-	birthday_at DATE COMMENT "Дата рождения",
+	birthday_at DATE COMMENT "Г„Г ГІГ  Г°Г®Г¦Г¤ГҐГ­ГЁГї",
 	created_at VARCHAR(255),
 	updated_at VARCHAR(255) 
-) COMMENT "Покупатели";
+) COMMENT "ГЏГ®ГЄГіГЇГ ГІГҐГ«ГЁ";
 
 INSERT INTO users (name, birthday_at, created_at, updated_at) VALUES 
 	('Kate', '1990-01-01','20.10.2017 8:10','20.10.2017 8:10'),
