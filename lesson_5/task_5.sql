@@ -1,5 +1,5 @@
--- (ïî æåëàíèþ) Èç òàáëèöû catalogs èçâëåêàþòñÿ çàïèñè ïðè ïîìîùè çàïðîñà. SELECT * FROM catalogs WHERE id IN (5, 1, 2);
--- Îòñîðòèðóéòå çàïèñè â ïîðÿäêå, çàäàííîì â ñïèñêå IN.
+-- (Ð¿Ð¾ Ð¶ÐµÐ»Ð°Ð½Ð¸ÑŽ) Ð˜Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ catalogs Ð¸Ð·Ð²Ð»ÐµÐºÐ°ÑŽÑ‚ÑÑ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°. SELECT * FROM catalogs WHERE id IN (5, 1, 2);
+-- ÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ, Ð·Ð°Ð´Ð°Ð½Ð½Ð¾Ð¼ Ð² ÑÐ¿Ð¸ÑÐºÐµ IN.
 
 DROP DATABASE IF EXISTS shop;
 CREATE DATABASE IF NOT EXISTS shop;
@@ -9,14 +9,14 @@ USE shop;
 DROP TABLE IF EXISTS catalogs;
 CREATE TABLE IF NOT EXISTS catalogs (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(255) COMMENT "Íàçâàíèå ðàçäåëà"
-) COMMENT "Ðàçäåëû èíòåðíåò ìàãàçèíà";
+	name VARCHAR(255) COMMENT "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°"
+) COMMENT "Ð Ð°Ð·Ð´ÐµÐ»Ñ‹ Ð¸Ð½Ñ‚ÐµÑ€Ð½ÐµÑ‚ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð°";
 
 INSERT INTO catalogs (name) VALUES
-	('Ïðîöåññîðû'),
-	('Ìàòåðèíñêèå ïëàòû'),
-	('Âèäåîêàðòû'),
-	('Æåñòêèå äèñêè'),
-	('Îïåðàòèâíàÿ ïàìÿòü');
+	('ÐŸÑ€Ð¾Ñ†ÐµÑÑÐ¾Ñ€Ñ‹'),
+	('ÐœÐ°Ñ‚ÐµÑ€Ð¸Ð½ÑÐºÐ¸Ðµ Ð¿Ð»Ð°Ñ‚Ñ‹'),
+	('Ð’Ð¸Ð´ÐµÐ¾ÐºÐ°Ñ€Ñ‚Ñ‹'),
+	('Ð–ÐµÑÑ‚ÐºÐ¸Ðµ Ð´Ð¸ÑÐºÐ¸'),
+	('ÐžÐ¿ÐµÑ€Ð°Ñ‚Ð¸Ð²Ð½Ð°Ñ Ð¿Ð°Ð¼ÑÑ‚ÑŒ');
 
 SELECT id,name FROM catalogs WHERE id IN (5,1,2) ORDER BY IF(id>3,0,1);
