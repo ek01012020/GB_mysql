@@ -1,9 +1,5 @@
 -- Проанализировать какие запросы могут выполняться наиболее часто в процессе работы приложения и добавить необходимые индексы.
 	
-SHOW TABLES;
-SHOW INDEX FROM users;
-SELECT * FROM users limit 1;
-
 CREATE INDEX media_filename_idx ON media (filename);
 CREATE INDEX messages_is_important_idx ON messages (is_important);
 CREATE INDEX posts_views_counter_idx ON posts (views_counter);
@@ -28,14 +24,15 @@ SELECT DISTINCT c.name,
 		MAX(p.birthday ) OVER w AS young, 
 		MIN(p.birthday ) OVER w AS `old`, 
 		COUNT(cu.user_id ) OVER w AS count_users,
-		COUNT(p.user_id ) OVER () AS total_users,
-		COUNT(cu.user_id ) OVER w / COUNT(p.user_id ) OVER () * 100 AS `%` 
+		(SELECT COUNT(id) FROM users) AS total_users,
+		COUNT(cu.user_id ) OVER w / (SELECT COUNT(id) FROM users) * 100 AS `%` 
 FROM (communities_users cu
 	JOIN
 	communities c 
 		ON cu.community_id = c.id		
-	JOIN 
+	RIGHT JOIN 
 	profiles p 
 		ON cu.user_id = p.user_id)
 		WINDOW w AS (PARTITION BY cu.community_id );
+	
 	
