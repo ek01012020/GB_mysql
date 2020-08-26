@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="ER_Diagram_booking.erd">
+	<entities>
+		<data-source id="mysql5-173864cc887-5acf85025c1b9d1e">
+			<entity id="1" name="cities" fq-name="booking.cities" order="0" x="865" y="417">
+				<path name="booking"/>
+			</entity>
+			<entity id="2" name="countries" fq-name="booking.countries" order="1" x="1020" y="431">
+				<path name="booking"/>
+			</entity>
+			<entity id="3" name="facilities" fq-name="booking.facilities" order="2" x="809" y="649">
+				<path name="booking"/>
+			</entity>
+			<entity id="4" name="objects" fq-name="booking.objects" order="3" x="663" y="367">
+				<path name="booking"/>
+			</entity>
+			<entity id="5" name="orders" fq-name="booking.orders" order="4" x="289" y="329">
+				<path name="booking"/>
+			</entity>
+			<entity id="6" name="periods" fq-name="booking.periods" order="5" x="457" y="188">
+				<path name="booking"/>
+			</entity>
+			<entity id="7" name="property_types" fq-name="booking.property_types" order="6" x="693" y="167">
+				<path name="booking"/>
+			</entity>
+			<entity id="8" name="room_facilities" fq-name="booking.room_facilities" order="7" x="269" y="552">
+				<path name="booking"/>
+			</entity>
+			<entity id="9" name="rooms" fq-name="booking.rooms" order="8" x="446" y="425">
+				<path name="booking"/>
+			</entity>
+			<entity id="10" name="stars" fq-name="booking.stars" order="9" x="888" y="244">
+				<path name="booking"/>
+			</entity>
+			<entity id="11" name="users" fq-name="booking.users" order="10" border-width="3" x="176" y="144">
+				<path name="booking"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="objects_cities_fk" fq-name="booking.objects.objects_cities_fk" type="fk" pk-ref="1" fk-ref="4"/>
+		<relation name="cities_countries_fk" fq-name="booking.cities.cities_countries_fk" type="fk" pk-ref="2" fk-ref="1"/>
+		<relation name="objects_facilities_fk" fq-name="booking.objects.objects_facilities_fk" type="fk" pk-ref="3" fk-ref="4"/>
+		<relation name="rooms_objects_fk" fq-name="booking.rooms.rooms_objects_fk" type="fk" pk-ref="4" fk-ref="9"/>
+		<relation name="orders_periods_fk" fq-name="booking.orders.orders_periods_fk" type="fk" pk-ref="6" fk-ref="5"/>
+		<relation name="objects_property_types_fk" fq-name="booking.objects.objects_property_types_fk" type="fk" pk-ref="7" fk-ref="4"/>
+		<relation name="rooms_room_facilities_fk" fq-name="booking.rooms.rooms_room_facilities_fk" type="fk" pk-ref="8" fk-ref="9"/>
+		<relation name="orders_rooms_fk" fq-name="booking.orders.orders_rooms_fk" type="fk" pk-ref="9" fk-ref="5"/>
+		<relation name="periods_rooms_fk" fq-name="booking.periods.periods_rooms_fk" type="fk" pk-ref="9" fk-ref="6"/>
+		<relation name="objects_stars_fk" fq-name="booking.objects.objects_stars_fk" type="fk" pk-ref="10" fk-ref="4"/>
+		<relation name="orders_users_fk" fq-name="booking.orders.orders_users_fk" type="fk" pk-ref="11" fk-ref="5"/>
+	</relations>
+</diagram>
