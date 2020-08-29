@@ -122,32 +122,17 @@ CONSTRAINT rooms_room_facilities_fk
 FOREIGN KEY (room_facilities_id) REFERENCES room_facilities(id) ON DELETE SET NULL
 ) COMMENT "Номер";
 
-DROP TABLE IF EXISTS periods;
-CREATE TABLE periods (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-rooms_id INT UNSIGNED NOT NULL COMMENT "идентификатор номера",
-check_in DATE NOT NULL COMMENT "регистрация",
-check_out DATE NOT NULL COMMENT "время выезда",
-created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-updeted_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-CONSTRAINT periods_rooms_fk
-FOREIGN KEY (rooms_id) REFERENCES rooms(id) ON DELETE CASCADE
-) COMMENT "даты брони комнаты";
-
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
 user_id INT UNSIGNED NOT NULL COMMENT "идентификатор пользователя",
 room_id INT UNSIGNED NOT NULL COMMENT "идентификатор номера",
-period_id INT UNSIGNED NOT NULL COMMENT "идентификатор временного периода",
+check_in DATE NOT NULL COMMENT "регистрация",
+check_out DATE NOT NULL COMMENT "время выезда",
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-PRIMARY KEY (room_id, period_id),
+PRIMARY KEY (room_id, check_in),
 CONSTRAINT orders_users_fk
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
 CONSTRAINT orders_rooms_fk
-FOREIGN KEY (room_id) REFERENCES rooms(id),
-CONSTRAINT orders_periods_fk
-FOREIGN KEY (period_id) REFERENCES periods(id)
+FOREIGN KEY (room_id) REFERENCES rooms(id)
 ) COMMENT "Заказ";
-
--- periods AND orders содержат room_id 
